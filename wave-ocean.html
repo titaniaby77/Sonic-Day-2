@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#d7dde5">
+<title>Sonic Day — Wave Ocean</title>
+<style>
+:root{
+  --paper:#e7ebef;
+  --steel:#8794a4;
+  --navy:#101827;
+  --ink:#0a0f18;
+  --amber:#f5b73a;
+  --blue:#2f74d0;
+  --cyan:#9ee5ee;
+  --danger:#d64545;
+}
+*{box-sizing:border-box}
+html,body{
+  margin:0;min-height:100%;
+  background:#090d13;color:#f8fbff;
+  font-family:Arial,Helvetica,sans-serif;
+  -webkit-text-size-adjust:100%;
+}
+body{
+  min-height:100dvh;
+  overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+button{
+  font:inherit;min-height:44px;cursor:pointer;
+  touch-action:manipulation;
+}
+#app{
+  position:relative;
+  min-height:100dvh;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,#b9c2cc 0 14%,#758497 14% 18%,#1b2a3d 18% 52%,#0d1622 52% 100%);
+}
+.filmgrain{
+  position:absolute;inset:0;pointer-events:none;opacity:.08;z-index:2;
+  background:
+    repeating-radial-gradient(circle at 30% 30%,rgba(255,255,255,.2) 0 1px,transparent 1px 3px);
+  mix-blend-mode:overlay;
+}
+.letterboxTop,.letterboxBottom{
+  position:absolute;left:0;right:0;height:0;background:#000;z-index:25;pointer-events:none;
+  transition:height .55s ease;
+}
+.letterboxTop{top:0}.letterboxBottom{bottom:0}
+.cinematic .letterboxTop,.cinematic .letterboxBottom{height:7.5%}
+.sky{
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;
+}
+.sun{
+  position:absolute;top:9%;right:10%;
+  width:110px;height:110px;border-radius:50%;
+  background:radial-gradient(circle,#fff6c7 0 14%,#f8c45a 34%,rgba(245,183,58,.15) 68%,transparent 70%);
+  opacity:.9;
+}
+.cloud{
+  position:absolute;height:28px;border-radius:999px;
+  background:rgba(240,246,250,.18);
+  filter:blur(.8px);
+  animation:cloud 20s linear infinite;
+}
+.cloud.c1{width:230px;top:21%;left:-25%;animation-delay:-2s}
+.cloud.c2{width:170px;top:28%;left:55%;animation-delay:-11s}
+@keyframes cloud{to{transform:translateX(140vw)}}
+.sea{
+  position:absolute;left:-10%;right:-10%;bottom:-8%;height:43%;
+  background:
+    repeating-linear-gradient(176deg,rgba(255,255,255,.07) 0 4px,transparent 4px 28px),
+    linear-gradient(180deg,#23506f,#143247 55%,#0b1c29);
+  transform:skewY(-2deg);
+}
+.sea::after{
+  content:"";position:absolute;left:-5%;right:-5%;top:16%;
+  height:26px;background:rgba(234,248,255,.12);
+  border-radius:50%;filter:blur(2px);
+  animation:surf 4.5s ease-in-out infinite alternate;
+}
+@keyframes surf{to{transform:translateX(5%)}}
+.topbar{
+  position:absolute;z-index:40;left:0;right:0;top:0;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:calc(12px + env(safe-area-inset-top)) 14px 10px;
+}
+.brand{
+  font-size:.76rem;font-weight:900;letter-spacing:.16em;
+  color:#f3f6f9;text-transform:uppercase;
+}
+.brand b{color:var(--amber)}
+.sound{
+  width:44px;height:44px;border-radius:3px;border:1px solid rgba(255,255,255,.24);
+  background:rgba(10,15,24,.45);color:#fff;
+}
+.progress{
+  position:absolute;z-index:45;top:0;left:0;height:2px;width:0;
+  background:var(--amber);transition:width .5s ease;
+}
+.screen{
+  position:absolute;inset:0;z-index:5;
+  display:flex;align-items:center;justify-content:center;
+  padding:calc(68px + env(safe-area-inset-top)) 18px calc(34px + env(safe-area-inset-bottom));
+  opacity:0;pointer-events:none;
+  transform:translateY(14px);
+  transition:opacity .65s ease,transform .65s ease;
+}
+.screen.active{opacity:1;pointer-events:auto;transform:none}
+.wrap{width:min(920px,100%);text-align:center}
+.kicker{
+  font-size:.66rem;letter-spacing:.28em;
+  text-transform:uppercase;color:#c9d0d8;font-weight:900;
+}
+.hero{
+  margin:10px 0 0;
+  font-size:clamp(3rem,12vw,7.1rem);
+  font-weight:300;
+  line-height:.84;
+  letter-spacing:-.055em;
+  text-transform:uppercase;
+  color:#f5f7f9;
+  text-shadow:0 4px 0 rgba(0,0,0,.24);
+}
+.hero strong{
+  display:block;font-weight:1000;font-style:italic;
+  color:var(--amber);
+}
+.sub{
+  margin-top:17px;font-size:clamp(.8rem,3vw,1.05rem);
+  letter-spacing:.24em;text-transform:uppercase;
+  color:#dce3e9;font-weight:900;
+}
+.primary,.ghost{
+  margin-top:22px;
+  padding:13px 25px;
+  border-radius:3px;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:.74rem;
+  font-weight:1000;
+  color:#fff;
+}
+.primary{
+  border:0;background:linear-gradient(180deg,#f4bd4b,#c78116);
+  color:#131922;box-shadow:0 7px 20px rgba(0,0,0,.25)
+}
+.ghost{
+  border:1px solid rgba(255,255,255,.28);
+  background:rgba(5,9,15,.38)
+}
+.scene{
+  width:min(850px,100%);min-height:455px;margin:auto;
+  position:relative;overflow:hidden;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(11,18,28,.58);
+  box-shadow:0 26px 70px rgba(0,0,0,.38)
+}
+.scene::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(255,255,255,.035),transparent 28%,transparent 72%,rgba(255,255,255,.025));
+  pointer-events:none
+}
+.sceneHead{
+  position:absolute;z-index:6;left:22px;top:20px;text-align:left;
+}
+.sceneHead .chapter{
+  font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:1000
+}
+.sceneHead h2{
+  margin:7px 0 0;font-size:clamp(1.6rem,5vw,2.7rem);
+  font-weight:300;letter-spacing:-.03em
+}
+.caption{
+  position:absolute;z-index:7;left:0;right:0;bottom:0;
+  padding:18px 22px 20px;text-align:left;
+  background:linear-gradient(180deg,transparent,rgba(4,8,13,.91) 26%,rgba(4,8,13,.98));
+  color:#eef3f7;line-height:1.58;
+  font-size:clamp(.96rem,3.5vw,1.12rem)
+}
+.dialogue{
+  margin-top:10px;font-style:italic;color:#fff
+}
+.dialogue span{
+  display:block;margin-top:7px;color:var(--amber);
+  font-style:normal;font-size:.62rem;
+  letter-spacing:.18em;font-weight:1000
+}
+.character{
+  position:absolute;bottom:115px;width:138px;height:180px;
+}
+.sonicFig{left:11%}
+.tailsFig{right:10%}
+.head{
+  position:absolute;left:31px;top:7px;width:77px;height:77px;border-radius:50%
+}
+.sonicFig .head{
+  background:radial-gradient(circle at 39% 34%,#fff 0 6%,transparent 7%),radial-gradient(circle,#326cc8 0 42%,#1a3f85 68%,#101d3e);
+}
+.tailsFig .head{
+  background:radial-gradient(circle at 39% 34%,#fff 0 6%,transparent 7%),radial-gradient(circle,#e59b2b 0 44%,#a76017 71%)
+}
+.bodyFig{
+  position:absolute;left:46px;top:75px;width:46px;height:84px;border-radius:40% 40% 27% 27%
+}
+.sonicFig .bodyFig{background:linear-gradient(#326cc8,#173d83)}
+.tailsFig .bodyFig{background:linear-gradient(#e5a23b,#a76019)}
+.leg{
+  position:absolute;bottom:0;width:18px;height:55px;border-radius:9px;background:#173d83
+}
+.tailsFig .leg{background:#a76019}
+.leg.l{left:42px;transform:rotate(8deg)}.leg.r{left:76px;transform:rotate(-8deg)}
+.shoe{
+  position:absolute;bottom:-2px;width:42px;height:17px;border-radius:999px;background:#c93838
+}
+.shoe.l{left:22px}.shoe.r{left:73px}
+.tail{
+  position:absolute;right:-45px;top:103px;width:80px;height:26px;border-radius:999px;
+  background:linear-gradient(90deg,#ad6518,#efad45,#f2f1e6);
+  transform-origin:left center
+}
+.tail.t1{transform:rotate(25deg)}.tail.t2{transform:rotate(-12deg)}
+.ship{
+  position:absolute;right:9%;top:27%;width:225px;height:70px;border-radius:50% 50% 35% 35%;
+  background:linear-gradient(#b8c0ca,#68737f 54%,#313943);
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+  animation:shipDrift 5.5s ease-in-out infinite alternate
+}
+.ship::before{
+  content:"";position:absolute;left:34%;top:-29px;width:78px;height:33px;border-radius:40px 40px 0 0;background:#6e7883
+}
+.ship::after{
+  content:"";position:absolute;left:-82px;top:28px;width:92px;height:9px;background:linear-gradient(90deg,transparent,#ef6e48)
+}
+@keyframes shipDrift{to{transform:translate(42px,-13px) scale(.94)}}
+.feather{
+  position:absolute;left:50%;top:30%;width:24px;height:108px;
+  border-radius:80% 10% 80% 10%;
+  background:linear-gradient(90deg,#fff,#d8e4ea 62%,#a8b7c1);
+  transform:rotate(20deg);
+  box-shadow:0 0 16px rgba(255,255,255,.38);
+  animation:feather 3.3s ease-in-out infinite alternate
+}
+@keyframes feather{to{transform:translateY(85px) rotate(1deg)}}
+
+/* Arrival gate game */
+.gate{
+  width:min(820px,100%);margin:auto;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(8,14,22,.78);
+  padding:18px 16px 22px;
+}
+.gate h2{
+  margin:6px 0 8px;font-size:clamp(1.75rem,7vw,3rem);font-weight:300;text-transform:uppercase
+}
+.gate p{margin:0 auto;max-width:620px;line-height:1.5;color:#dbe2e8}
+.timerLine{
+  margin-top:13px;display:flex;justify-content:space-between;gap:12px;
+  color:#cdd5dd;font-size:.72rem;letter-spacing:.14em;font-weight:900
+}
+.bar{
+  height:13px;margin-top:9px;background:rgba(255,255,255,.08);overflow:hidden;
+  border:1px solid rgba(255,255,255,.1)
+}
+.barFill{
+  height:100%;width:0;background:linear-gradient(90deg,var(--amber),#ffd87b);
+  transition:width .12s linear
+}
+.runway{
+  position:relative;height:min(58vw,350px);min-height:285px;margin-top:16px;
+  overflow:hidden;border:1px solid rgba(255,255,255,.13);
+  background:
+    linear-gradient(to top,#182334 0 18%,transparent 18%),
+    linear-gradient(#95a6b8 0 32%,#455b70 32% 58%,#152436 58% 100%);
+}
+.runway::after{
+  content:"";position:absolute;left:0;right:0;bottom:18%;height:4px;
+  background:repeating-linear-gradient(90deg,#d7e3e8 0 26px,transparent 26px 56px);
+  animation:road 1s linear infinite
+}
+@keyframes road{to{background-position:-56px 0}}
+.runner{
+  position:absolute;left:10%;bottom:18%;
+  width:78px;height:78px;object-fit:contain;
+  filter:drop-shadow(0 8px 10px rgba(0,0,0,.35));
+  transition:bottom .12s ease;
+  z-index:5
+}
+.runner.jump{bottom:48%}
+.obstacle{
+  position:absolute;bottom:18%;
+  width:72px;height:72px;
+  object-fit:contain;
+  animation:obstacleMove linear forwards;
+  z-index:4;
+  filter:drop-shadow(0 6px 8px rgba(0,0,0,.3));
+}
+@keyframes obstacleMove{from{left:105%}to{left:-60px}}
+.jumpBtn{
+  margin-top:14px;width:min(100%,320px);min-height:54px;
+  border:0;border-radius:3px;background:#f0b83f;color:#101722;font-weight:1000;
+  letter-spacing:.14em;text-transform:uppercase
+}
+.failOverlay,.successOverlay{
+  position:absolute;inset:0;z-index:15;display:flex;align-items:center;justify-content:center;
+  padding:18px;background:rgba(5,8,13,.9);opacity:0;pointer-events:none;transition:.3s
+}
+.failOverlay.show,.successOverlay.show{opacity:1;pointer-events:auto}
+.resultCard{
+  width:min(500px,100%);padding:28px 22px;border:1px solid rgba(255,255,255,.16);
+  background:#0e151f;text-align:center
+}
+.resultCard h3{
+  margin:0;font-size:clamp(2rem,8vw,3.5rem);font-weight:300;text-transform:uppercase
+}
+.resultCard.fail h3{color:#d97676}
+.resultCard.success h3{color:var(--amber)}
+.resultCard p{color:#dce3e8;line-height:1.5}
+.emerald{
+  width:92px;height:124px;margin:18px auto 12px;
+  clip-path:polygon(50% 0,88% 22%,100% 60%,50% 100%,0 60%,12% 22%);
+  background:linear-gradient(135deg,rgba(255,255,255,.85),transparent 16%),linear-gradient(160deg,#a8e8f0,#3b77cb 48%,#244a8e 78%,#142549);
+  box-shadow:0 0 32px rgba(63,128,213,.45)
+}
+.claimBox{
+  width:min(620px,100%);margin:auto;padding:28px 20px;
+  border-top:2px solid var(--amber);border-bottom:2px solid var(--amber);
+  background:linear-gradient(90deg,transparent,rgba(245,183,58,.09),transparent)
+}
+.claimBox p{max-width:560px;margin:15px auto 0;line-height:1.55;color:#e5ebf0}
+.inventory{
+  margin-top:11px;font-family:Consolas,monospace;color:#c8d4df;letter-spacing:.08em
+}
+
+/* final mission */
+.missionCard{
+  width:min(680px,100%);margin:auto;padding:32px 20px;
+  background:rgba(8,14,22,.8);border-top:2px solid var(--amber);border-bottom:2px solid var(--amber)
+}
+.missionLabel{font-size:.66rem;letter-spacing:.24em;color:#bfc8d0;font-weight:900}
+.missionName{
+  margin-top:10px;font-size:clamp(2.1rem,9vw,4.4rem);font-weight:1000;font-style:italic;
+  text-transform:uppercase;color:#f2f5f7
+}
+.location{
+  margin:24px auto 0;width:min(560px,100%);padding:18px 16px;
+  background:#d8dde2;color:#121820;text-align:left;border-left:6px solid var(--amber)
+}
+.location .lab{
+  font-size:.62rem;letter-spacing:.2em;color:#65717d;font-weight:1000
+}
+.location .name{
+  margin-top:8px;font-size:clamp(1.25rem,5vw,2rem);font-weight:1000;letter-spacing:-.02em
+}
+.flash{
+  position:absolute;inset:0;z-index:100;background:#fff;opacity:0;pointer-events:none
+}
+.flash.hit{animation:flash .45s ease}
+@keyframes flash{0%{opacity:0}10%{opacity:1}35%{opacity:.15}60%{opacity:.6}100%{opacity:0}}
+@media(max-width:520px){
+  .brand{font-size:.62rem}
+  .scene{min-height:530px}
+  .characterPhoto{bottom:165px}
+  .sonicPhoto{left:1%;width:min(38vw,165px)}
+  .tailsPhoto{right:0;width:min(36vw,155px)}
+  .ship{width:175px;height:56px;right:2%;top:31%}
+  .caption{padding:17px 16px}
+  .runway{height:55dvh;max-height:430px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+.characterPhoto{
+  position:absolute;
+  bottom:112px;
+  z-index:4;
+  object-fit:contain;
+  pointer-events:none;
+  filter:drop-shadow(0 12px 18px rgba(0,0,0,.35));
+}
+.sonicPhoto{
+  left:8%;
+  width:min(29vw,200px);
+  max-height:260px;
+}
+.tailsPhoto{
+  right:8%;
+  width:min(28vw,190px);
+  max-height:250px;
+}
+
+</style>
+</head>
+<body>
+<!--
+Only these external Stage 2 images are required:
+assets/stage2/sonic.png
+assets/stage2/tails.png
+assets/stage2/eggman-barrier.png
+
+Egg Carrier, feather and Blue Chaos Emerald remain CSS/animated elements.
+-->
+<div id="app">
+  <div class="sky">
+    <div class="sun"></div>
+    <div class="cloud c1"></div><div class="cloud c2"></div>
+    <div class="sea"></div>
+  </div>
+  <div class="filmgrain"></div>
+  <div class="letterboxTop"></div><div class="letterboxBottom"></div>
+  <div class="flash" id="flash"></div>
+  <div class="progress" id="progress"></div>
+
+  <div class="topbar">
+    <div class="brand">SOLEANNA SYSTEM // <b>WAVE OCEAN</b></div>
+    <button class="sound" id="soundBtn" type="button">🔊</button>
+  </div>
+
+  <!-- 0 -->
+  <section class="screen active" id="s0">
+    <div class="wrap">
+      <div class="kicker">Arrival Point Reached</div>
+      <h1 class="hero">Wave <strong>Ocean</strong></h1>
+      <div class="sub">Before the pursuit can continue, clear the route.</div>
+      <button class="primary" id="startBtn" type="button">ENTER STAGE</button>
+    </div>
+  </section>
+
+  <!-- 1 pre-crystal game -->
+  <section class="screen" id="s1">
+    <div class="wrap">
+      <div class="gate">
+        <div class="kicker">Wave Ocean // Route Test</div>
+        <h2>Survive the Coastline</h2>
+        <p>Jump over Eggman's barriers until the route stabilizes. Three collisions will force a restart.</p>
+
+        <div class="timerLine">
+          <span id="timeText">TIME 15.0</span>
+          <span id="hitText">HITS 0 / 3</span>
+        </div>
+        <div class="bar"><div class="barFill" id="barFill"></div></div>
+
+        <div class="runway" id="runway">
+          <img class="runner" id="runner" src="./assets/stage2/sonic.png" alt="Sonic">
+
+          <div class="failOverlay" id="failOverlay">
+            <div class="resultCard fail">
+              <h3>Route Failed</h3>
+              <p>Too much damage. The coastline is still blocked.</p>
+              <button class="ghost" id="retryBtn" type="button">TRY AGAIN</button>
+            </div>
+          </div>
+
+          <div class="successOverlay" id="successOverlay">
+            <div class="resultCard success">
+              <h3>Route Clear</h3>
+              <p>The signal is stable. A Chaos Emerald can now be secured.</p>
+              <button class="primary" id="claimBtn" type="button">CONTINUE</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="jumpBtn" id="jumpBtn" type="button">JUMP</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 crystal handoff -->
+  <section class="screen" id="s2">
+    <div class="wrap">
+      <div class="claimBox">
+        <div class="kicker">Chaos Energy Confirmed</div>
+        <div class="emerald"></div>
+        <div class="sub" style="color:var(--amber)">BLUE CHAOS EMERALD</div>
+        <p>
+          Stage cleared. Take the Blue Chaos Emerald from the person running the game.
+          Once you have it physically, continue.
+        </p>
+        <div class="inventory">INVENTORY // 01 OF 07</div>
+        <button class="primary" data-next="3" type="button">I HAVE THE EMERALD</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 cinematic tails -->
+  <section class="screen" id="s3">
+    <div class="wrap">
+      <div class="scene">
+        <div class="sceneHead">
+          <div class="chapter">Scene 01 // Castle Town</div>
+          <h2>Tails catches up.</h2>
+        </div>
+        <img class="characterPhoto sonicPhoto" src="./assets/stage2/sonic.png" alt="Sonic">
+        <img class="characterPhoto tailsPhoto" src="./assets/stage2/tails.png" alt="Tails">
+        <div class="caption">
+          Morning settles over Soleanna. Sonic is still looking for Eggman's trail when Tails finds him and learns that Princess Elise has been taken.
+          <br><br>
+          Tails joins the search immediately. Together, they head toward the coast.
+          <div class="dialogue">“With your help, this should be a piece of cake.”<span>SONIC</span></div>
+        </div>
+      </div>
+      <button class="ghost" data-next="4" type="button">CONTINUE</button>
+    </div>
+  </section>
+
+  <!-- 4 chase -->
+  <section class="screen" id="s4">
+    <div class="wrap">
+      <div class="scene">
+        <div class="sceneHead">
+          <div class="chapter">Scene 02 // Wave Ocean</div>
+          <h2>The Egg Carrier is ahead.</h2>
+        </div>
+        <div class="ship"></div>
+        <img class="characterPhoto sonicPhoto" style="bottom:105px;left:8%;width:min(26vw,180px)" src="./assets/stage2/sonic.png" alt="Sonic">
+        <div class="caption">
+          Sonic and Tails race through the coastal route. The Egg Carrier remains just visible on the horizon.
+          <br><br>
+          The closer they get, the higher the battleship climbs. Sonic keeps pushing forward, but the ship is already pulling away.
+        </div>
+      </div>
+      <button class="ghost" data-next="5" type="button">KEEP CHASING</button>
+    </div>
+  </section>
+
+  <!-- 5 feather -->
+  <section class="screen" id="s5">
+    <div class="wrap">
+      <div class="scene">
+        <div class="sceneHead">
+          <div class="chapter">Scene 03 // Too Late</div>
+          <h2>The trail disappears.</h2>
+        </div>
+        <div class="ship" style="right:-8%;top:20%;transform:scale(.74);opacity:.72"></div>
+        <div class="feather"></div>
+        <div class="caption">
+          The Egg Carrier escapes.
+          <br><br>
+          As the ship disappears, a single white feather drifts down. Sonic recognizes it as a piece from Elise's dress. She was aboard the ship—but Eggman has changed course.
+        </div>
+      </div>
+      <button class="ghost" data-next="6" type="button">CONTINUE</button>
+    </div>
+  </section>
+
+  <!-- 6 new mission -->
+  <section class="screen" id="s6">
+    <div class="wrap">
+      <div class="missionCard">
+        <div class="missionLabel">NEW OBJECTIVE</div>
+        <div class="missionName">Return to Soleanna</div>
+        <p style="max-width:560px;margin:15px auto 0;line-height:1.55;color:#dce3e8">
+          Tails needs information from the city. The pursuit cannot continue until a new lead is found.
+        </p>
+
+        <div class="location">
+          <div class="lab">NEXT LOCATION</div>
+          <!-- EDIT THIS NAME -->
+          <div class="name">Soleanna — Fountain Plaza</div>
+        </div>
+
+        <p style="margin:15px auto 0;max-width:540px;color:#bdc7d0;line-height:1.5">
+          Go there and look for the next QR code.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(() => {
+  const screens=[...document.querySelectorAll('.screen')];
+  const app=document.getElementById('app');
+  const progress=document.getElementById('progress');
+  const flash=document.getElementById('flash');
+  let current=0;
+
+  /* -------- AUDIO: deliberately different from Prologue -------- */
+  let ctx=null,master=null,musicGain=null,sfxGain=null,timer=null,muted=false,scene='arrival',beat=0;
+  const AC=window.AudioContext||window.webkitAudioContext;
+
+  function initAudio(){
+    if(!ctx){
+      ctx=new AC();
+      master=ctx.createGain();musicGain=ctx.createGain();sfxGain=ctx.createGain();
+      master.gain.value=.8;musicGain.gain.value=.16;sfxGain.gain.value=.34;
+      musicGain.connect(master);sfxGain.connect(master);master.connect(ctx.destination);
+    }
+    if(ctx.state==='suspended')ctx.resume();
+  }
+
+  function tone(freq,t,dur,type='sine',vol=.05,dest='music'){
+    if(!ctx)return;
+    const o=ctx.createOscillator(),g=ctx.createGain(),target=dest==='music'?musicGain:sfxGain;
+    o.type=type;o.frequency.setValueAtTime(freq,t);
+    g.gain.setValueAtTime(.0001,t);
+    g.gain.exponentialRampToValueAtTime(vol,t+.01);
+    g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+    o.connect(g);g.connect(target);o.start(t);o.stop(t+dur+.03);
+  }
+
+  function noise(dur=.05,vol=.04){
+    if(!ctx)return;
+    const n=Math.floor(ctx.sampleRate*dur),b=ctx.createBuffer(1,n,ctx.sampleRate),d=b.getChannelData(0);
+    for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*(1-i/n);
+    const s=ctx.createBufferSource(),g=ctx.createGain();s.buffer=b;g.gain.value=vol;s.connect(g);g.connect(sfxGain);s.start();
+  }
+
+  function buzz(p=18){if('vibrate'in navigator){try{navigator.vibrate(p)}catch(e){}}}
+
+  function sfx(type){
+    initAudio();const t=ctx.currentTime;
+    if(type==='ui'){tone(720,t,.045,'triangle',.07,'sfx');tone(960,t+.05,.055,'triangle',.05,'sfx')}
+    if(type==='jump'){buzz(15);tone(330,t,.06,'square',.1,'sfx');tone(660,t+.04,.08,'triangle',.08,'sfx')}
+    if(type==='hit'){buzz([45,20,45]);noise(.12,.1);tone(105,t,.18,'sawtooth',.09,'sfx')}
+    if(type==='fail'){tone(392,t,.18,'sine',.08,'sfx');tone(294,t+.15,.22,'sine',.07,'sfx');tone(220,t+.32,.32,'sine',.08,'sfx')}
+    if(type==='clear'){[392,523,659,784].forEach((f,i)=>tone(f,t+i*.09,.16,'triangle',.08,'sfx'))}
+    if(type==='feather'){tone(784,t,.25,'sine',.035,'sfx');tone(1175,t+.14,.3,'sine',.025,'sfx')}
+  }
+
+  function setMusic(name){
+    initAudio();scene=name;if(timer)clearInterval(timer);beat=0;
+
+    const arrival=[196,247,294,330,294,247,220,247];
+    const run=[196,247,294,392,330,294,247,220,247,330,392,440];
+    const cinema=[147,196,220,247,220,196,165,185];
+    const chase=[220,330,440,494,440,392,330,294,330,440,494,587];
+
+    function tick(){
+      if(muted)return;
+      const t=ctx.currentTime+.02;
+      const arr=name==='run'?run:name==='chase'?chase:name==='cinema'?cinema:arrival;
+      const f=arr[beat%arr.length];
+
+      if(name==='cinema'){
+        tone(f,t,.38,'sine',.027);
+        if(beat%2===0)tone(f*1.5,t,.30,'triangle',.018);
+      }else if(name==='run'){
+        tone(f,t,.09,'square',.038);
+        tone(f/2,t,.13,'triangle',.026);
+        if(beat%2===0)noise(.018,.012);
+      }else if(name==='chase'){
+        tone(f,t,.12,'sawtooth',.028);
+        if(beat%2===0)tone(f/2,t,.16,'square',.02);
+      }else{
+        tone(f,t,.24,'triangle',.03);
+        if(beat%3===0)tone(f*2,t,.18,'sine',.015);
+      }
+      beat++;
+    }
+
+    tick();
+    timer=setInterval(tick,name==='run'?125:name==='chase'?150:name==='cinema'?340:220);
+  }
+
+  document.getElementById('soundBtn').addEventListener('click',()=>{
+    initAudio();muted=!muted;
+    document.getElementById('soundBtn').textContent=muted?'🔇':'🔊';
+    master.gain.setTargetAtTime(muted?.0001:.8,ctx.currentTime,.03);
+  });
+
+  function flashNow(){flash.classList.remove('hit');void flash.offsetWidth;flash.classList.add('hit')}
+
+  function cinematic(on){
+    app.classList.toggle('cinematic',on);
+  }
+
+  function show(n){
+    screens[current].classList.remove('active');
+    current=n;
+    screens[current].classList.add('active');
+    progress.style.width=(current/(screens.length-1)*100)+'%';
+    sfx('ui');
+
+    const isCinematic=[3,4,5].includes(n);
+    cinematic(isCinematic);
+
+    if(n===1){setMusic('run')}
+    else if(n===3){setMusic('cinema')}
+    else if(n===4){setMusic('chase')}
+    else if(n===5){setMusic('cinema');sfx('feather')}
+    else if(n===6){setMusic('arrival')}
+  }
+
+  document.getElementById('startBtn').addEventListener('click',()=>{
+    initAudio();setMusic('run');show(1);startGate();
+  });
+
+  document.querySelectorAll('[data-next]').forEach(btn=>{
+    btn.addEventListener('click',()=>show(Number(btn.dataset.next)));
+  });
+
+  /* -------- ARRIVAL GATE GAME -------- */
+  const runway=document.getElementById('runway');
+  const runner=document.getElementById('runner');
+  const jumpBtn=document.getElementById('jumpBtn');
+  const timeText=document.getElementById('timeText');
+  const hitText=document.getElementById('hitText');
+  const barFill=document.getElementById('barFill');
+  const failOverlay=document.getElementById('failOverlay');
+  const successOverlay=document.getElementById('successOverlay');
+  const retryBtn=document.getElementById('retryBtn');
+  const claimBtn=document.getElementById('claimBtn');
+
+  let timeLeft=15,hits=0,gateTimer=null,spawnTimer=null,running=false,jumping=false;
+  let obstacles=[];
+
+  function clearObstacles(){
+    obstacles.forEach(o=>o.remove());
+    obstacles=[];
+  }
+
+  function updateGateUI(){
+    timeText.textContent='TIME '+Math.max(0,timeLeft).toFixed(1);
+    hitText.textContent='HITS '+hits+' / 3';
+    barFill.style.width=((15-timeLeft)/15*100)+'%';
+  }
+
+  function jump(){
+    if(!running||jumping)return;
+    jumping=true;sfx('jump');runner.classList.add('jump');
+    setTimeout(()=>{runner.classList.remove('jump');jumping=false},520);
+  }
+
+  jumpBtn.addEventListener('click',jump);
+  runway.addEventListener('click',(e)=>{
+    if(e.target===runway)jump();
+  });
+
+  function spawnObstacle(){
+    if(!running)return;
+    const o=document.createElement('img');
+    o.className='obstacle';
+    o.src='./assets/stage2/eggman-barrier.png';
+    o.alt='Eggman barrier';
+    const duration=Math.max(1.35,2.25-(15-timeLeft)*.045);
+    o.style.animationDuration=duration+'s';
+    runway.appendChild(o);
+    obstacles.push(o);
+
+    const check=setInterval(()=>{
+      if(!running||!o.isConnected){clearInterval(check);return}
+      const rr=runner.getBoundingClientRect(),or=o.getBoundingClientRect();
+      const overlap=rr.right>or.left+5 && rr.left<or.right-5 && rr.bottom>or.top+5 && rr.top<or.bottom-5;
+      if(overlap&&!jumping&&!o.dataset.hit){
+        o.dataset.hit='1';hits++;sfx('hit');hitText.textContent='HITS '+hits+' / 3';
+        o.style.opacity='.35';
+        if(hits>=3){clearInterval(check);failGame()}
+      }
+    },35);
+
+    o.addEventListener('animationend',()=>{
+      clearInterval(check);
+      o.remove();
+      obstacles=obstacles.filter(x=>x!==o)
+    });
+
+    spawnTimer=setTimeout(spawnObstacle,700+Math.random()*520);
+  }
+
+  function stopGateTimers(){
+    clearInterval(gateTimer);clearTimeout(spawnTimer);
+    gateTimer=null;spawnTimer=null;
+  }
+
+  function failGame(){
+    if(!running)return;
+    running=false;stopGateTimers();sfx('fail');failOverlay.classList.add('show');
+  }
+
+  function winGame(){
+    if(!running)return;
+    running=false;stopGateTimers();sfx('clear');
+    localStorage.setItem('sonicDay.waveOceanGate','passed');
+    successOverlay.classList.add('show');
+  }
+
+  function startGate(){
+    stopGateTimers();clearObstacles();
+    timeLeft=15;hits=0;running=true;jumping=false;
+    failOverlay.classList.remove('show');successOverlay.classList.remove('show');
+    updateGateUI();
+
+    gateTimer=setInterval(()=>{
+      if(!running)return;
+      timeLeft-=.1;
+      updateGateUI();
+      if(timeLeft<=0){timeLeft=0;updateGateUI();winGame()}
+    },100);
+
+    spawnTimer=setTimeout(spawnObstacle,650);
+  }
+
+  retryBtn.addEventListener('click',()=>{
+    sfx('ui');startGate();
+  });
+
+  claimBtn.addEventListener('click',()=>{
+    localStorage.setItem('sonicDay.blueEmerald','true');
+    flashNow();
+    show(2);
+  });
+})();
+</script>
+</body>
+</html>
