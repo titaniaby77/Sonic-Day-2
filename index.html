@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover"
+>
 <meta name="theme-color" content="#d7dde5">
 
 <title>Elise's Birthday — Wave Ocean</title>
@@ -30,7 +33,12 @@ body{
   min-height:100%;
   background:#090d13;
   color:#f8fbff;
-  font-family:Arial,Helvetica,sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   -webkit-text-size-adjust:100%;
 }
 
@@ -49,7 +57,9 @@ button{
 
 #app{
   position:relative;
+
   min-height:100dvh;
+
   overflow:hidden;
 
   background:
@@ -62,15 +72,18 @@ button{
     );
 }
 
-/* =========================
+/* =====================================================
    BACKGROUND
-========================= */
+===================================================== */
 
 .filmgrain{
   position:absolute;
   inset:0;
+
   pointer-events:none;
+
   opacity:.08;
+
   z-index:2;
 
   background:
@@ -86,13 +99,20 @@ button{
 .letterboxTop,
 .letterboxBottom{
   position:absolute;
+
   left:0;
   right:0;
+
   height:0;
+
   background:#000;
+
   z-index:25;
+
   pointer-events:none;
-  transition:height .55s ease;
+
+  transition:
+    height .55s ease;
 }
 
 .letterboxTop{
@@ -111,17 +131,21 @@ button{
 .sky{
   position:absolute;
   inset:0;
+
   pointer-events:none;
+
   overflow:hidden;
 }
 
 .sun{
   position:absolute;
+
   top:9%;
   right:10%;
 
   width:110px;
   height:110px;
+
   border-radius:50%;
 
   background:
@@ -138,38 +162,56 @@ button{
 
 .cloud{
   position:absolute;
+
   height:28px;
+
   border-radius:999px;
-  background:rgba(240,246,250,.18);
-  filter:blur(.8px);
-  animation:cloud 20s linear infinite;
+
+  background:
+    rgba(240,246,250,.18);
+
+  filter:
+    blur(.8px);
+
+  animation:
+    cloud 20s linear infinite;
 }
 
 .cloud.c1{
   width:230px;
+
   top:21%;
   left:-25%;
+
   animation-delay:-2s;
 }
 
 .cloud.c2{
   width:170px;
+
   top:28%;
   left:55%;
+
   animation-delay:-11s;
 }
 
 @keyframes cloud{
+
   to{
-    transform:translateX(140vw);
+    transform:
+      translateX(140vw);
   }
+
 }
 
 .sea{
   position:absolute;
+
   left:-10%;
   right:-10%;
+
   bottom:-8%;
+
   height:43%;
 
   background:
@@ -185,43 +227,61 @@ button{
       #0b1c29
     );
 
-  transform:skewY(-2deg);
+  transform:
+    skewY(-2deg);
 }
 
 .sea::after{
   content:"";
+
   position:absolute;
+
   left:-5%;
   right:-5%;
+
   top:16%;
+
   height:26px;
 
-  background:rgba(234,248,255,.12);
-  border-radius:50%;
-  filter:blur(2px);
+  background:
+    rgba(234,248,255,.12);
 
-  animation:surf 4.5s ease-in-out infinite alternate;
+  border-radius:50%;
+
+  filter:
+    blur(2px);
+
+  animation:
+    surf 4.5s ease-in-out infinite alternate;
 }
 
 @keyframes surf{
+
   to{
-    transform:translateX(5%);
+    transform:
+      translateX(5%);
   }
+
 }
 
-/* =========================
+/* =====================================================
    TOP BAR
-========================= */
+===================================================== */
 
 .topbar{
   position:absolute;
+
   z-index:40;
+
   left:0;
   right:0;
   top:0;
 
   display:flex;
-  justify-content:space-between;
+
+  justify-content:
+    space-between;
+
   align-items:center;
 
   padding:
@@ -232,9 +292,13 @@ button{
 
 .brand{
   font-size:.76rem;
+
   font-weight:900;
+
   letter-spacing:.16em;
+
   color:#f3f6f9;
+
   text-transform:uppercase;
 }
 
@@ -245,38 +309,52 @@ button{
 .sound{
   width:44px;
   height:44px;
+
   border-radius:3px;
 
-  border:1px solid rgba(255,255,255,.24);
-  background:rgba(10,15,24,.45);
+  border:
+    1px solid rgba(255,255,255,.24);
+
+  background:
+    rgba(10,15,24,.45);
+
   color:#fff;
 }
 
 .progress{
   position:absolute;
+
   z-index:45;
+
   top:0;
   left:0;
 
   height:2px;
+
   width:0;
 
-  background:var(--amber);
+  background:
+    var(--amber);
 
-  transition:width .5s ease;
+  transition:
+    width .5s ease;
 }
 
-/* =========================
+/* =====================================================
    SCREENS
-========================= */
+===================================================== */
 
 .screen{
   position:absolute;
+
   inset:0;
+
   z-index:5;
 
   display:flex;
+
   align-items:center;
+
   justify-content:center;
 
   padding:
@@ -285,9 +363,11 @@ button{
     calc(34px + env(safe-area-inset-bottom));
 
   opacity:0;
+
   pointer-events:none;
 
-  transform:translateY(14px);
+  transform:
+    translateY(14px);
 
   transition:
     opacity .65s ease,
@@ -296,30 +376,42 @@ button{
 
 .screen.active{
   opacity:1;
+
   pointer-events:auto;
+
   transform:none;
 }
 
 .wrap{
-  width:min(920px,100%);
+  width:
+    min(920px,100%);
+
   text-align:center;
 }
 
 .kicker{
   font-size:.66rem;
+
   letter-spacing:.28em;
+
   text-transform:uppercase;
+
   color:#c9d0d8;
+
   font-weight:900;
 }
 
 .hero{
-  margin:10px 0 0;
+  margin:
+    10px 0 0;
 
-  font-size:clamp(3rem,12vw,7.1rem);
+  font-size:
+    clamp(3rem,12vw,7.1rem);
 
   font-weight:300;
+
   line-height:.84;
+
   letter-spacing:-.055em;
 
   text-transform:uppercase;
@@ -332,20 +424,27 @@ button{
 
 .hero strong{
   display:block;
+
   font-weight:1000;
+
   font-style:italic;
-  color:var(--amber);
+
+  color:
+    var(--amber);
 }
 
 .sub{
   margin-top:17px;
 
-  font-size:clamp(.8rem,3vw,1.05rem);
+  font-size:
+    clamp(.8rem,3vw,1.05rem);
 
   letter-spacing:.24em;
+
   text-transform:uppercase;
 
   color:#dce3e9;
+
   font-weight:900;
 }
 
@@ -353,14 +452,17 @@ button{
 .ghost{
   margin-top:22px;
 
-  padding:13px 25px;
+  padding:
+    13px 25px;
 
   border-radius:3px;
 
   text-transform:uppercase;
+
   letter-spacing:.16em;
 
   font-size:.74rem;
+
   font-weight:1000;
 
   color:#fff;
@@ -383,26 +485,34 @@ button{
 }
 
 .ghost{
-  border:1px solid rgba(255,255,255,.28);
-  background:rgba(5,9,15,.38);
+  border:
+    1px solid rgba(255,255,255,.28);
+
+  background:
+    rgba(5,9,15,.38);
 }
 
-/* =========================
+/* =====================================================
    STORY SCENES
-========================= */
+===================================================== */
 
 .scene{
-  width:min(850px,100%);
+  width:
+    min(850px,100%);
+
   min-height:455px;
 
   margin:auto;
 
   position:relative;
+
   overflow:hidden;
 
-  border:1px solid rgba(255,255,255,.15);
+  border:
+    1px solid rgba(255,255,255,.15);
 
-  background:rgba(11,18,28,.58);
+  background:
+    rgba(11,18,28,.58);
 
   box-shadow:
     0 26px 70px rgba(0,0,0,.38);
@@ -412,6 +522,7 @@ button{
   content:"";
 
   position:absolute;
+
   inset:0;
 
   background:
@@ -428,7 +539,9 @@ button{
 
 .sceneHead{
   position:absolute;
+
   z-index:6;
+
   left:22px;
   top:20px;
 
@@ -437,32 +550,40 @@ button{
 
 .sceneHead .chapter{
   font-size:.64rem;
+
   letter-spacing:.2em;
+
   text-transform:uppercase;
 
-  color:var(--amber);
+  color:
+    var(--amber);
 
   font-weight:1000;
 }
 
 .sceneHead h2{
-  margin:7px 0 0;
+  margin:
+    7px 0 0;
 
-  font-size:clamp(1.6rem,5vw,2.7rem);
+  font-size:
+    clamp(1.6rem,5vw,2.7rem);
 
   font-weight:300;
+
   letter-spacing:-.03em;
 }
 
 .caption{
   position:absolute;
+
   z-index:7;
 
   left:0;
   right:0;
   bottom:0;
 
-  padding:18px 22px 20px;
+  padding:
+    18px 22px 20px;
 
   text-align:left;
 
@@ -478,13 +599,15 @@ button{
 
   line-height:1.58;
 
-  font-size:clamp(.96rem,3.5vw,1.12rem);
+  font-size:
+    clamp(.96rem,3.5vw,1.12rem);
 }
 
 .dialogue{
   margin-top:10px;
 
   font-style:italic;
+
   color:#fff;
 }
 
@@ -493,7 +616,8 @@ button{
 
   margin-top:7px;
 
-  color:var(--amber);
+  color:
+    var(--amber);
 
   font-style:normal;
 
@@ -504,17 +628,15 @@ button{
   font-weight:1000;
 }
 
-/* =========================
-   CHARACTER IMAGES
-========================= */
-
 .characterPhoto{
   position:absolute;
+
   bottom:112px;
 
   z-index:4;
 
   object-fit:contain;
+
   pointer-events:none;
 
   filter:
@@ -526,7 +648,8 @@ button{
 .sonicPhoto{
   left:8%;
 
-  width:min(29vw,200px);
+  width:
+    min(29vw,200px);
 
   max-height:260px;
 }
@@ -534,14 +657,15 @@ button{
 .tailsPhoto{
   right:8%;
 
-  width:min(28vw,190px);
+  width:
+    min(28vw,190px);
 
   max-height:250px;
 }
 
-/* =========================
-   EGG CARRIER
-========================= */
+/* =====================================================
+   SHIP
+===================================================== */
 
 .ship{
   position:absolute;
@@ -575,6 +699,7 @@ button{
   position:absolute;
 
   left:34%;
+
   top:-29px;
 
   width:78px;
@@ -592,6 +717,7 @@ button{
   position:absolute;
 
   left:-82px;
+
   top:28px;
 
   width:92px;
@@ -606,16 +732,18 @@ button{
 }
 
 @keyframes shipDrift{
+
   to{
     transform:
       translate(42px,-13px)
       scale(.94);
   }
+
 }
 
-/* =========================
+/* =====================================================
    FEATHER
-========================= */
+===================================================== */
 
 .feather{
   position:absolute;
@@ -637,7 +765,8 @@ button{
       #a8b7c1
     );
 
-  transform:rotate(20deg);
+  transform:
+    rotate(20deg);
 
   box-shadow:
     0 0 16px rgba(255,255,255,.38);
@@ -647,19 +776,23 @@ button{
 }
 
 @keyframes feather{
+
   to{
     transform:
       translateY(85px)
       rotate(1deg);
   }
+
 }
 
 /* =====================================================
-   MINI GAME
+   MINIGAME CONTAINER
 ===================================================== */
 
 .gate{
-  width:min(820px,100%);
+  width:
+    min(820px,100%);
+
   margin:auto;
 
   border:
@@ -673,7 +806,8 @@ button{
 }
 
 .gate h2{
-  margin:6px 0 8px;
+  margin:
+    6px 0 8px;
 
   font-size:
     clamp(1.75rem,7vw,3rem);
@@ -684,7 +818,8 @@ button{
 }
 
 .gate p{
-  margin:0 auto;
+  margin:
+    0 auto;
 
   max-width:620px;
 
@@ -741,12 +876,16 @@ button{
     width .12s linear;
 }
 
-/* RUNWAY */
+/* =====================================================
+   RUNWAY
+===================================================== */
 
 .runway{
   position:relative;
 
-  height:min(58vw,350px);
+  height:
+    min(58vw,350px);
+
   min-height:285px;
 
   margin-top:16px;
@@ -768,8 +907,6 @@ button{
       #152436 58% 100%
     );
 }
-
-/* ROAD LINE */
 
 .runway::after{
   content:"";
@@ -795,19 +932,23 @@ button{
 }
 
 @keyframes road{
+
   to{
-    background-position:-56px 0;
+    background-position:
+      -56px 0;
   }
+
 }
 
-/* =========================
-   SONIC RUNNER
-========================= */
+/* =====================================================
+   SONIC
+===================================================== */
 
 .runner{
   position:absolute;
 
   left:10%;
+
   bottom:18%;
 
   width:78px;
@@ -821,27 +962,29 @@ button{
     );
 
   transition:
-    bottom .22s cubic-bezier(.2,.8,.3,1),
-    transform .22s ease;
+    bottom .20s cubic-bezier(.2,.85,.3,1),
+    transform .20s ease;
 
   z-index:5;
 
   user-select:none;
 
   -webkit-user-drag:none;
+
+  pointer-events:none;
 }
 
 .runner.jump{
-  bottom:57%;
+  bottom:64%;
 
   transform:
-    rotate(-8deg)
-    scale(1.04);
+    rotate(-10deg)
+    scale(1.06);
 }
 
-/* =========================
-   ALL OBSTACLES
-========================= */
+/* =====================================================
+   GROUND BARRIER
+===================================================== */
 
 .obstacle{
   position:absolute;
@@ -863,98 +1006,12 @@ button{
   user-select:none;
 }
 
-/* GROUND BARRIER */
-
 .obstacle.ground{
   bottom:18%;
 
   width:68px;
   height:68px;
 }
-
-/* =========================
-   ROCKET
-========================= */
-
-.cssRocket{
-  position:absolute;
-
-  bottom:48%;
-
-  width:84px;
-  height:28px;
-
-  border-radius:
-    60% 18% 18% 60%;
-
-  background:
-    linear-gradient(
-      180deg,
-      #f3f5f7 0%,
-      #aeb7c1 36%,
-      #6d7987 58%,
-      #252f3a 100%
-    );
-
-  box-shadow:
-    inset -12px 0 0 rgba(0,0,0,.18),
-    0 7px 10px rgba(0,0,0,.3);
-
-  animation:
-    obstacleMove linear forwards;
-
-  z-index:4;
-
-  pointer-events:none;
-}
-
-/* ROCKET FIRE */
-
-.cssRocket::before{
-  content:"";
-
-  position:absolute;
-
-  left:-30px;
-  top:8px;
-
-  width:36px;
-  height:12px;
-
-  border-radius:50%;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      #ffdc5d 25%,
-      #ff7b35 58%,
-      #e6452d 100%
-    );
-
-  filter:blur(.5px);
-}
-
-/* ROCKET NOSE */
-
-.cssRocket::after{
-  content:"";
-
-  position:absolute;
-
-  right:-4px;
-  top:6px;
-
-  width:13px;
-  height:16px;
-
-  border-radius:
-    40% 70% 70% 40%;
-
-  background:#d74444;
-}
-
-/* OBSTACLE MOVEMENT */
 
 @keyframes obstacleMove{
 
@@ -965,24 +1022,209 @@ button{
   to{
     left:-120px;
   }
+
 }
 
-/* =========================
+/* =====================================================
+   ROCKET MOVEMENT WRAPPER
+
+   Outer element handles movement from right to left.
+   Inner rocket handles bobbing separately.
+===================================================== */
+
+.rocketMover{
+  position:absolute;
+
+  left:110%;
+
+  bottom:49%;
+
+  width:90px;
+  height:48px;
+
+  z-index:4;
+
+  pointer-events:none;
+
+  animation:
+    rocketMove linear forwards;
+}
+
+/* =====================================================
+   ROCKET BODY
+===================================================== */
+
+.cssRocket{
+  position:absolute;
+
+  left:0;
+
+  top:9px;
+
+  width:84px;
+  height:28px;
+
+  border-radius:
+    60% 18% 18% 60%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f6f7f9 0%,
+      #c0c8d0 30%,
+      #7c8794 55%,
+      #394552 78%,
+      #202832 100%
+    );
+
+  box-shadow:
+    inset -12px 0 0 rgba(0,0,0,.16),
+    0 7px 10px rgba(0,0,0,.30);
+
+  transform-origin:center;
+
+  animation:
+    rocketBob .38s ease-in-out infinite alternate;
+}
+
+/* FIRE */
+
+.cssRocket::before{
+  content:"";
+
+  position:absolute;
+
+  left:-33px;
+
+  top:8px;
+
+  width:39px;
+  height:12px;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      #ffef7b 22%,
+      #ffc945 42%,
+      #ff7a36 68%,
+      #e94328 100%
+    );
+
+  filter:
+    blur(.7px);
+
+  transform-origin:right center;
+
+  animation:
+    rocketFlame .08s ease-in-out infinite alternate;
+}
+
+/* RED NOSE */
+
+.cssRocket::after{
+  content:"";
+
+  position:absolute;
+
+  right:-5px;
+
+  top:6px;
+
+  width:14px;
+  height:16px;
+
+  border-radius:
+    40% 80% 80% 40%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ff6767,
+      #b72222
+    );
+}
+
+/* =====================================================
+   ROCKET ANIMATIONS
+===================================================== */
+
+@keyframes rocketMove{
+
+  from{
+    left:110%;
+  }
+
+  to{
+    left:-140px;
+  }
+
+}
+
+@keyframes rocketBob{
+
+  0%{
+    transform:
+      translateY(-6px)
+      rotate(-4deg);
+  }
+
+  50%{
+    transform:
+      translateY(0px)
+      rotate(0deg);
+  }
+
+  100%{
+    transform:
+      translateY(7px)
+      rotate(4deg);
+  }
+
+}
+
+@keyframes rocketFlame{
+
+  from{
+    transform:
+      translateX(4px)
+      scaleX(.65)
+      scaleY(.8);
+
+    opacity:.72;
+  }
+
+  to{
+    transform:
+      translateX(-3px)
+      scaleX(1.30)
+      scaleY(1.15);
+
+    opacity:1;
+  }
+
+}
+
+/* =====================================================
    JUMP BUTTON
-========================= */
+===================================================== */
 
 .jumpBtn{
   margin-top:14px;
 
-  width:min(100%,320px);
+  width:
+    min(100%,320px);
 
-  min-height:58px;
+  min-height:60px;
 
   border:0;
 
   border-radius:3px;
 
-  background:#f0b83f;
+  background:
+    #f0b83f;
 
   color:#101722;
 
@@ -998,14 +1240,15 @@ button{
 }
 
 .jumpBtn:active{
-  transform:scale(.97);
+  transform:
+    scale(.97);
 
   background:#ffd261;
 }
 
-/* =========================
-   GAME RESULTS
-========================= */
+/* =====================================================
+   RESULT OVERLAYS
+===================================================== */
 
 .failOverlay,
 .successOverlay{
@@ -1041,9 +1284,11 @@ button{
 }
 
 .resultCard{
-  width:min(500px,100%);
+  width:
+    min(500px,100%);
 
-  padding:28px 22px;
+  padding:
+    28px 22px;
 
   border:
     1px solid rgba(255,255,255,.16);
@@ -1069,7 +1314,8 @@ button{
 }
 
 .resultCard.success h3{
-  color:var(--amber);
+  color:
+    var(--amber);
 }
 
 .resultCard p{
@@ -1078,9 +1324,9 @@ button{
   line-height:1.5;
 }
 
-/* =========================
-   CHAOS EMERALD
-========================= */
+/* =====================================================
+   EMERALD
+===================================================== */
 
 .emerald{
   width:92px;
@@ -1119,11 +1365,13 @@ button{
 }
 
 .claimBox{
-  width:min(620px,100%);
+  width:
+    min(620px,100%);
 
   margin:auto;
 
-  padding:28px 20px;
+  padding:
+    28px 20px;
 
   border-top:
     2px solid var(--amber);
@@ -1155,23 +1403,26 @@ button{
   margin-top:11px;
 
   font-family:
-    Consolas,monospace;
+    Consolas,
+    monospace;
 
   color:#c8d4df;
 
   letter-spacing:.08em;
 }
 
-/* =========================
+/* =====================================================
    FINAL MISSION
-========================= */
+===================================================== */
 
 .missionCard{
-  width:min(680px,100%);
+  width:
+    min(680px,100%);
 
   margin:auto;
 
-  padding:32px 20px;
+  padding:
+    32px 20px;
 
   background:
     rgba(8,14,22,.8);
@@ -1212,9 +1463,11 @@ button{
   margin:
     24px auto 0;
 
-  width:min(560px,100%);
+  width:
+    min(560px,100%);
 
-  padding:18px 16px;
+  padding:
+    18px 16px;
 
   background:#d8dde2;
 
@@ -1247,9 +1500,9 @@ button{
   letter-spacing:-.02em;
 }
 
-/* =========================
-   FLASH EFFECT
-========================= */
+/* =====================================================
+   FLASH
+===================================================== */
 
 .flash{
   position:absolute;
@@ -1291,6 +1544,7 @@ button{
   100%{
     opacity:0;
   }
+
 }
 
 /* =====================================================
@@ -1301,6 +1555,11 @@ button{
 
   .brand{
     font-size:.62rem;
+  }
+
+  .screen{
+    padding-left:10px;
+    padding-right:10px;
   }
 
   .scene{
@@ -1314,13 +1573,15 @@ button{
   .sonicPhoto{
     left:1%;
 
-    width:min(38vw,165px);
+    width:
+      min(38vw,165px);
   }
 
   .tailsPhoto{
     right:0;
 
-    width:min(36vw,155px);
+    width:
+      min(36vw,155px);
   }
 
   .ship{
@@ -1338,17 +1599,24 @@ button{
       17px 16px;
   }
 
-  /* GAME AREA */
-
   .gate{
     padding:
-      14px 10px 18px;
+      14px 9px 18px;
+  }
+
+  .gate h2{
+    font-size:
+      clamp(1.65rem,7vw,2.4rem);
+  }
+
+  .gate p{
+    font-size:.9rem;
   }
 
   .runway{
-    height:52dvh;
+    height:50dvh;
 
-    max-height:410px;
+    max-height:400px;
 
     min-height:300px;
 
@@ -1357,37 +1625,54 @@ button{
 
   .runner{
     width:66px;
-
     height:66px;
 
     left:8%;
   }
 
   .runner.jump{
-    bottom:56%;
+    bottom:64%;
+
+    transform:
+      rotate(-10deg)
+      scale(1.08);
   }
 
   .obstacle.ground{
-    width:56px;
+    width:54px;
 
-    height:56px;
+    height:54px;
+  }
+
+  .rocketMover{
+    width:76px;
+
+    height:42px;
+
+    bottom:50%;
   }
 
   .cssRocket{
     width:72px;
 
-    height:25px;
+    height:24px;
 
-    bottom:49%;
+    top:8px;
   }
 
   .cssRocket::before{
-    height:10px;
+    left:-28px;
 
     top:7px;
+
+    width:33px;
+
+    height:10px;
   }
 
   .cssRocket::after{
+    width:12px;
+
     height:14px;
 
     top:5px;
@@ -1396,11 +1681,11 @@ button{
   .jumpBtn{
     width:100%;
 
-    min-height:66px;
+    min-height:68px;
 
     margin-top:10px;
 
-    font-size:.88rem;
+    font-size:.9rem;
 
     letter-spacing:.18em;
   }
@@ -1411,7 +1696,9 @@ button{
 
 }
 
-/* REDUCED MOTION */
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1432,30 +1719,13 @@ button{
 
 <body>
 
-<!--
-
-Required image files:
-
-assets/stage2/sonic.png
-assets/stage2/tails.png
-assets/stage2/eggman-barrier.png
-
-Rocket is created entirely with CSS.
-
--->
-
 <div id="app">
 
   <div class="sky">
-
     <div class="sun"></div>
-
     <div class="cloud c1"></div>
-
     <div class="cloud c2"></div>
-
     <div class="sea"></div>
-
   </div>
 
   <div class="filmgrain"></div>
@@ -1464,14 +1734,20 @@ Rocket is created entirely with CSS.
 
   <div class="letterboxBottom"></div>
 
-  <div class="flash" id="flash"></div>
+  <div
+    class="flash"
+    id="flash"
+  ></div>
 
-  <div class="progress" id="progress"></div>
+  <div
+    class="progress"
+    id="progress"
+  ></div>
 
 
-  <!-- =====================
+  <!-- =================================================
        TOP BAR
-  ====================== -->
+  ================================================== -->
 
   <div class="topbar">
 
@@ -1491,9 +1767,9 @@ Rocket is created entirely with CSS.
   </div>
 
 
-  <!-- =====================
+  <!-- =================================================
        SCREEN 0
-  ====================== -->
+  ================================================== -->
 
   <section
     class="screen active"
@@ -1533,9 +1809,9 @@ Rocket is created entirely with CSS.
   </section>
 
 
-  <!-- =====================
-       SCREEN 1 - GAME
-  ====================== -->
+  <!-- =================================================
+       SCREEN 1 - MINIGAME
+  ================================================== -->
 
   <section
     class="screen"
@@ -1555,10 +1831,9 @@ Rocket is created entirely with CSS.
         </h2>
 
         <p>
-          Jump over Eggman's barriers and stay low when rockets cross overhead.
+          Jump over Eggman's barriers and stay low when rockets fly overhead.
           Three collisions will force a restart.
         </p>
-
 
         <div class="timerLine">
 
@@ -1572,7 +1847,6 @@ Rocket is created entirely with CSS.
 
         </div>
 
-
         <div class="bar">
 
           <div
@@ -1581,7 +1855,6 @@ Rocket is created entirely with CSS.
           ></div>
 
         </div>
-
 
         <div
           class="runway"
@@ -1657,7 +1930,6 @@ Rocket is created entirely with CSS.
 
         </div>
 
-
         <button
           class="jumpBtn"
           id="jumpBtn"
@@ -1673,9 +1945,9 @@ Rocket is created entirely with CSS.
   </section>
 
 
-  <!-- =====================
+  <!-- =================================================
        SCREEN 2
-  ====================== -->
+  ================================================== -->
 
   <section
     class="screen"
@@ -1700,7 +1972,7 @@ Rocket is created entirely with CSS.
         </div>
 
         <p>
-          Stage cleared. Take the Blue Chaos Emerald from the game master and your master. Life mastah.
+          Stage cleared. Take the Blue Chaos Emerald from the person running the game.
           Once you have it physically, continue.
         </p>
 
@@ -1723,9 +1995,9 @@ Rocket is created entirely with CSS.
   </section>
 
 
-  <!-- =====================
+  <!-- =================================================
        SCREEN 3
-  ====================== -->
+  ================================================== -->
 
   <section
     class="screen"
@@ -1748,20 +2020,17 @@ Rocket is created entirely with CSS.
 
         </div>
 
-
         <img
           class="characterPhoto sonicPhoto"
           src="./assets/stage2/sonic.png"
           alt="Sonic"
         >
 
-
         <img
           class="characterPhoto tailsPhoto"
           src="./assets/stage2/tails.png"
           alt="Tails"
         >
-
 
         <div class="caption">
 
@@ -1785,7 +2054,6 @@ Rocket is created entirely with CSS.
 
       </div>
 
-
       <button
         class="ghost"
         data-next="4"
@@ -1799,9 +2067,9 @@ Rocket is created entirely with CSS.
   </section>
 
 
-  <!-- =====================
+  <!-- =================================================
        SCREEN 4
-  ====================== -->
+  ================================================== -->
 
   <section
     class="screen"
@@ -1824,9 +2092,7 @@ Rocket is created entirely with CSS.
 
         </div>
 
-
         <div class="ship"></div>
-
 
         <img
           class="characterPhoto sonicPhoto"
@@ -1838,7 +2104,6 @@ Rocket is created entirely with CSS.
           src="./assets/stage2/sonic.png"
           alt="Sonic"
         >
-
 
         <div class="caption">
 
@@ -1854,7 +2119,6 @@ Rocket is created entirely with CSS.
 
       </div>
 
-
       <button
         class="ghost"
         data-next="5"
@@ -1868,9 +2132,9 @@ Rocket is created entirely with CSS.
   </section>
 
 
-  <!-- =====================
+  <!-- =================================================
        SCREEN 5
-  ====================== -->
+  ================================================== -->
 
   <section
     class="screen"
@@ -1893,7 +2157,6 @@ Rocket is created entirely with CSS.
 
         </div>
 
-
         <div
           class="ship"
           style="
@@ -1904,9 +2167,7 @@ Rocket is created entirely with CSS.
           "
         ></div>
 
-
         <div class="feather"></div>
-
 
         <div class="caption">
 
@@ -1922,7 +2183,6 @@ Rocket is created entirely with CSS.
 
       </div>
 
-
       <button
         class="ghost"
         data-next="6"
@@ -1936,9 +2196,9 @@ Rocket is created entirely with CSS.
   </section>
 
 
-  <!-- =====================
+  <!-- =================================================
        SCREEN 6
-  ====================== -->
+  ================================================== -->
 
   <section
     class="screen"
@@ -1969,7 +2229,6 @@ Rocket is created entirely with CSS.
           The pursuit cannot continue until a new lead is found.
         </p>
 
-
         <div class="location">
 
           <div class="lab">
@@ -1977,11 +2236,10 @@ Rocket is created entirely with CSS.
           </div>
 
           <div class="name">
-            FORUM TRABZON
+            Soleanna — Fountain Plaza
           </div>
 
         </div>
-
 
         <p
           style="
@@ -1991,7 +2249,7 @@ Rocket is created entirely with CSS.
             line-height:1.5
           "
         >
-          Go there and look for the next game! rahhh
+          Go there and look for the next QR code.
         </p>
 
       </div>
@@ -2008,7 +2266,7 @@ Rocket is created entirely with CSS.
 (() => {
 
 /* =====================================================
-   GENERAL SCREEN SYSTEM
+   SCREEN SYSTEM
 ===================================================== */
 
 const screens =
@@ -2038,11 +2296,9 @@ let musicGain = null;
 
 let sfxGain = null;
 
-let timer = null;
+let musicTimer = null;
 
 let muted = false;
-
-let scene = 'arrival';
 
 let beat = 0;
 
@@ -2055,7 +2311,8 @@ function initAudio(){
 
   if(!ctx){
 
-    ctx = new AC();
+    ctx =
+      new AC();
 
     master =
       ctx.createGain();
@@ -2066,24 +2323,33 @@ function initAudio(){
     sfxGain =
       ctx.createGain();
 
+    master.gain.value =
+      .8;
 
-    master.gain.value = .8;
+    musicGain.gain.value =
+      .16;
 
-    musicGain.gain.value = .16;
+    sfxGain.gain.value =
+      .34;
 
-    sfxGain.gain.value = .34;
+    musicGain.connect(
+      master
+    );
 
+    sfxGain.connect(
+      master
+    );
 
-    musicGain.connect(master);
-
-    sfxGain.connect(master);
-
-    master.connect(ctx.destination);
+    master.connect(
+      ctx.destination
+    );
 
   }
 
-
-  if(ctx.state === 'suspended'){
+  if(
+    ctx.state ===
+    'suspended'
+  ){
 
     ctx.resume();
 
@@ -2101,8 +2367,9 @@ function tone(
   dest = 'music'
 ){
 
-  if(!ctx) return;
-
+  if(!ctx){
+    return;
+  }
 
   const o =
     ctx.createOscillator();
@@ -2115,14 +2382,13 @@ function tone(
       ? musicGain
       : sfxGain;
 
-
-  o.type = type;
+  o.type =
+    type;
 
   o.frequency.setValueAtTime(
     freq,
     t
   );
-
 
   g.gain.setValueAtTime(
     .0001,
@@ -2139,16 +2405,16 @@ function tone(
     t + dur
   );
 
-
   o.connect(g);
 
   g.connect(target);
 
-
   o.start(t);
 
   o.stop(
-    t + dur + .03
+    t +
+    dur +
+    .03
   );
 
 }
@@ -2159,14 +2425,15 @@ function noise(
   vol = .04
 ){
 
-  if(!ctx) return;
-
+  if(!ctx){
+    return;
+  }
 
   const n =
     Math.floor(
-      ctx.sampleRate * dur
+      ctx.sampleRate *
+      dur
     );
-
 
   const b =
     ctx.createBuffer(
@@ -2175,10 +2442,8 @@ function noise(
       ctx.sampleRate
     );
 
-
   const d =
     b.getChannelData(0);
-
 
   for(
     let i = 0;
@@ -2187,11 +2452,17 @@ function noise(
   ){
 
     d[i] =
-      (Math.random() * 2 - 1) *
-      (1 - i / n);
+      (
+        Math.random() *
+        2 -
+        1
+      ) *
+      (
+        1 -
+        i / n
+      );
 
   }
-
 
   const s =
     ctx.createBufferSource();
@@ -2199,29 +2470,37 @@ function noise(
   const g =
     ctx.createGain();
 
+  s.buffer =
+    b;
 
-  s.buffer = b;
-
-  g.gain.value = vol;
-
+  g.gain.value =
+    vol;
 
   s.connect(g);
 
-  g.connect(sfxGain);
-
+  g.connect(
+    sfxGain
+  );
 
   s.start();
 
 }
 
 
-function buzz(p = 18){
+function buzz(
+  p = 18
+){
 
-  if('vibrate' in navigator){
+  if(
+    'vibrate' in
+    navigator
+  ){
 
     try{
 
-      navigator.vibrate(p);
+      navigator.vibrate(
+        p
+      );
 
     }catch(e){}
 
@@ -2238,7 +2517,9 @@ function sfx(type){
     ctx.currentTime;
 
 
-  if(type === 'ui'){
+  if(
+    type === 'ui'
+  ){
 
     tone(
       720,
@@ -2261,7 +2542,9 @@ function sfx(type){
   }
 
 
-  if(type === 'jump'){
+  if(
+    type === 'jump'
+  ){
 
     buzz(15);
 
@@ -2286,7 +2569,9 @@ function sfx(type){
   }
 
 
-  if(type === 'hit'){
+  if(
+    type === 'hit'
+  ){
 
     buzz(
       [45,20,45]
@@ -2309,7 +2594,9 @@ function sfx(type){
   }
 
 
-  if(type === 'fail'){
+  if(
+    type === 'fail'
+  ){
 
     tone(
       392,
@@ -2341,7 +2628,9 @@ function sfx(type){
   }
 
 
-  if(type === 'clear'){
+  if(
+    type === 'clear'
+  ){
 
     [
       392,
@@ -2353,7 +2642,8 @@ function sfx(type){
 
         tone(
           f,
-          t + i * .09,
+          t +
+          i * .09,
           .16,
           'triangle',
           .08,
@@ -2366,7 +2656,9 @@ function sfx(type){
   }
 
 
-  if(type === 'feather'){
+  if(
+    type === 'feather'
+  ){
 
     tone(
       784,
@@ -2388,6 +2680,35 @@ function sfx(type){
 
   }
 
+
+  /*
+    ROCKET WARNING SOUND
+  */
+
+  if(
+    type === 'rocket'
+  ){
+
+    tone(
+      930,
+      t,
+      .07,
+      'square',
+      .038,
+      'sfx'
+    );
+
+    tone(
+      690,
+      t + .075,
+      .075,
+      'square',
+      .033,
+      'sfx'
+    );
+
+  }
+
 }
 
 
@@ -2395,22 +2716,23 @@ function sfx(type){
    MUSIC
 ===================================================== */
 
-function setMusic(name){
+function setMusic(
+  name
+){
 
   initAudio();
 
-  scene = name;
+  if(
+    musicTimer
+  ){
 
-
-  if(timer){
-
-    clearInterval(timer);
+    clearInterval(
+      musicTimer
+    );
 
   }
 
-
   beat = 0;
-
 
   const arrival = [
     196,
@@ -2422,7 +2744,6 @@ function setMusic(name){
     220,
     247
   ];
-
 
   const run = [
     196,
@@ -2439,7 +2760,6 @@ function setMusic(name){
     440
   ];
 
-
   const cinema = [
     147,
     196,
@@ -2450,7 +2770,6 @@ function setMusic(name){
     165,
     185
   ];
-
 
   const chase = [
     220,
@@ -2470,22 +2789,25 @@ function setMusic(name){
 
   function tick(){
 
-    if(muted) return;
-
+    if(muted){
+      return;
+    }
 
     const t =
-      ctx.currentTime + .02;
-
+      ctx.currentTime +
+      .02;
 
     const arr =
       name === 'run'
         ? run
-        : name === 'chase'
-          ? chase
-          : name === 'cinema'
-            ? cinema
-            : arrival;
-
+        :
+      name === 'chase'
+        ? chase
+        :
+      name === 'cinema'
+        ? cinema
+        :
+      arrival;
 
     const f =
       arr[
@@ -2494,7 +2816,9 @@ function setMusic(name){
       ];
 
 
-    if(name === 'cinema'){
+    if(
+      name === 'cinema'
+    ){
 
       tone(
         f,
@@ -2503,7 +2827,6 @@ function setMusic(name){
         'sine',
         .027
       );
-
 
       if(
         beat % 2 === 0
@@ -2522,7 +2845,9 @@ function setMusic(name){
     }
 
 
-    else if(name === 'run'){
+    else if(
+      name === 'run'
+    ){
 
       tone(
         f,
@@ -2532,7 +2857,6 @@ function setMusic(name){
         .038
       );
 
-
       tone(
         f / 2,
         t,
@@ -2540,7 +2864,6 @@ function setMusic(name){
         'triangle',
         .026
       );
-
 
       if(
         beat % 2 === 0
@@ -2556,7 +2879,9 @@ function setMusic(name){
     }
 
 
-    else if(name === 'chase'){
+    else if(
+      name === 'chase'
+    ){
 
       tone(
         f,
@@ -2565,7 +2890,6 @@ function setMusic(name){
         'sawtooth',
         .028
       );
-
 
       if(
         beat % 2 === 0
@@ -2594,7 +2918,6 @@ function setMusic(name){
         .03
       );
 
-
       if(
         beat % 3 === 0
       ){
@@ -2611,7 +2934,6 @@ function setMusic(name){
 
     }
 
-
     beat++;
 
   }
@@ -2620,16 +2942,19 @@ function setMusic(name){
   tick();
 
 
-  timer =
+  musicTimer =
     setInterval(
       tick,
       name === 'run'
         ? 125
-        : name === 'chase'
-          ? 150
-          : name === 'cinema'
-            ? 340
-            : 220
+        :
+      name === 'chase'
+        ? 150
+        :
+      name === 'cinema'
+        ? 340
+        :
+      220
     );
 
 }
@@ -2640,25 +2965,26 @@ function setMusic(name){
 ===================================================== */
 
 document
-  .getElementById('soundBtn')
+  .getElementById(
+    'soundBtn'
+  )
   .addEventListener(
     'click',
     () => {
 
       initAudio();
 
-
       muted =
         !muted;
 
-
       document
-        .getElementById('soundBtn')
+        .getElementById(
+          'soundBtn'
+        )
         .textContent =
           muted
             ? '🔇'
             : '🔊';
-
 
       master.gain.setTargetAtTime(
         muted
@@ -2678,97 +3004,134 @@ document
 
 function flashNow(){
 
-  flash.classList.remove(
-    'hit'
-  );
+  flash
+    .classList
+    .remove(
+      'hit'
+    );
 
   void flash.offsetWidth;
 
-  flash.classList.add(
-    'hit'
-  );
+  flash
+    .classList
+    .add(
+      'hit'
+    );
 
 }
 
 
-function cinematic(on){
+function cinematic(
+  on
+){
 
-  app.classList.toggle(
-    'cinematic',
-    on
-  );
+  app
+    .classList
+    .toggle(
+      'cinematic',
+      on
+    );
 
 }
 
 
-function show(n){
+function show(
+  n
+){
 
-  screens[current]
+  screens[
+    current
+  ]
     .classList
-    .remove('active');
+    .remove(
+      'active'
+    );
 
+  current =
+    n;
 
-  current = n;
-
-
-  screens[current]
+  screens[
+    current
+  ]
     .classList
-    .add('active');
-
+    .add(
+      'active'
+    );
 
   progress.style.width =
     (
       current /
-      (screens.length - 1) *
+      (
+        screens.length -
+        1
+      ) *
       100
-    ) + '%';
+    ) +
+    '%';
 
-
-  sfx('ui');
-
-
-  const isCinematic =
-    [3,4,5].includes(n);
-
+  sfx(
+    'ui'
+  );
 
   cinematic(
-    isCinematic
+    [3,4,5]
+      .includes(
+        n
+      )
   );
 
 
-  if(n === 1){
+  if(
+    n === 1
+  ){
 
-    setMusic('run');
-
-  }
-
-
-  else if(n === 3){
-
-    setMusic('cinema');
+    setMusic(
+      'run'
+    );
 
   }
 
+  else if(
+    n === 3
+  ){
 
-  else if(n === 4){
-
-    setMusic('chase');
-
-  }
-
-
-  else if(n === 5){
-
-    setMusic('cinema');
-
-    sfx('feather');
+    setMusic(
+      'cinema'
+    );
 
   }
 
+  else if(
+    n === 4
+  ){
 
-  else if(n === 6){
+    setMusic(
+      'chase'
+    );
 
-    setMusic('arrival');
+  }
+
+  else if(
+    n === 5
+  ){
+
+    setMusic(
+      'cinema'
+    );
+
+    sfx(
+      'feather'
+    );
+
+  }
+
+  else if(
+    n === 6
+  ){
+
+    setMusic(
+      'arrival'
+    );
 
   }
 
@@ -2776,20 +3139,22 @@ function show(n){
 
 
 /* =====================================================
-   BUTTONS
+   MAIN BUTTONS
 ===================================================== */
 
 document
-  .getElementById('startBtn')
+  .getElementById(
+    'startBtn'
+  )
   .addEventListener(
     'click',
     () => {
 
       initAudio();
 
-      setMusic('run');
-
-      show(1);
+      show(
+        1
+      );
 
       startGate();
 
@@ -2798,79 +3163,115 @@ document
 
 
 document
-  .querySelectorAll('[data-next]')
+  .querySelectorAll(
+    '[data-next]'
+  )
   .forEach(
     btn => {
 
-      btn.addEventListener(
-        'click',
-        () => {
+      btn
+        .addEventListener(
+          'click',
+          () => {
 
-          show(
-            Number(
-              btn.dataset.next
-            )
-          );
+            show(
+              Number(
+                btn.dataset.next
+              )
+            );
 
-        }
-      );
+          }
+        );
 
     }
   );
 
 
 /* =====================================================
-   MINI GAME VARIABLES
+   GAME ELEMENTS
 ===================================================== */
 
 const runway =
-  document.getElementById('runway');
+  document.getElementById(
+    'runway'
+  );
 
 const runner =
-  document.getElementById('runner');
+  document.getElementById(
+    'runner'
+  );
 
 const jumpBtn =
-  document.getElementById('jumpBtn');
+  document.getElementById(
+    'jumpBtn'
+  );
 
 const timeText =
-  document.getElementById('timeText');
+  document.getElementById(
+    'timeText'
+  );
 
 const hitText =
-  document.getElementById('hitText');
+  document.getElementById(
+    'hitText'
+  );
 
 const barFill =
-  document.getElementById('barFill');
+  document.getElementById(
+    'barFill'
+  );
 
 const failOverlay =
-  document.getElementById('failOverlay');
+  document.getElementById(
+    'failOverlay'
+  );
 
 const successOverlay =
-  document.getElementById('successOverlay');
+  document.getElementById(
+    'successOverlay'
+  );
 
 const retryBtn =
-  document.getElementById('retryBtn');
+  document.getElementById(
+    'retryBtn'
+  );
 
 const claimBtn =
-  document.getElementById('claimBtn');
+  document.getElementById(
+    'claimBtn'
+  );
 
 
-const GAME_TIME = 18;
+/* =====================================================
+   GAME SETTINGS
+===================================================== */
 
+const GAME_TIME =
+  18;
+
+const MAX_HITS =
+  3;
 
 let timeLeft =
   GAME_TIME;
 
-let hits = 0;
+let hits =
+  0;
 
-let gateTimer = null;
+let gateTimer =
+  null;
 
-let spawnTimer = null;
+let spawnTimer =
+  null;
 
-let running = false;
+let running =
+  false;
 
-let jumping = false;
+let jumping =
+  false;
 
-let obstacles = [];
+let obstacles =
+  [];
 
 
 /* =====================================================
@@ -2879,18 +3280,23 @@ let obstacles = [];
 
 function clearObstacles(){
 
-  obstacles.forEach(
-    o => o.remove()
-  );
+  obstacles
+    .forEach(
+      obstacle => {
 
+        obstacle.remove();
 
-  obstacles = [];
+      }
+    );
+
+  obstacles =
+    [];
 
 }
 
 
 /* =====================================================
-   UPDATE UI
+   UI
 ===================================================== */
 
 function updateGateUI(){
@@ -2900,14 +3306,16 @@ function updateGateUI(){
     Math.max(
       0,
       timeLeft
-    ).toFixed(1);
-
+    )
+    .toFixed(
+      1
+    );
 
   hitText.textContent =
     'HITS ' +
     hits +
-    ' / 3';
-
+    ' / ' +
+    MAX_HITS;
 
   barFill.style.width =
     (
@@ -2917,13 +3325,18 @@ function updateGateUI(){
       ) /
       GAME_TIME *
       100
-    ) + '%';
+    ) +
+    '%';
 
 }
 
 
 /* =====================================================
    JUMP
+
+   Important:
+   Ground barriers cannot hurt Sonic while
+   jumping === true.
 ===================================================== */
 
 function jump(){
@@ -2937,22 +3350,22 @@ function jump(){
 
   }
 
+  jumping =
+    true;
 
-  jumping = true;
-
-
-  sfx('jump');
-
+  sfx(
+    'jump'
+  );
 
   runner
     .classList
-    .add('jump');
+    .add(
+      'jump'
+    );
 
 
   /*
-    Sonic stays visibly in the air for
-    long enough to comfortably clear a
-    barrier on mobile.
+    Keep Sonic visually in the air.
   */
 
   setTimeout(
@@ -2960,75 +3373,111 @@ function jump(){
 
       runner
         .classList
-        .remove('jump');
+        .remove(
+          'jump'
+        );
 
     },
-    520
+    650
   );
 
+
+  /*
+    Protection from ground barrier lasts
+    slightly longer than animation.
+  */
 
   setTimeout(
     () => {
 
-      jumping = false;
+      jumping =
+        false;
 
     },
-    690
+    860
   );
 
 }
 
 
-jumpBtn.addEventListener(
-  'click',
-  jump
-);
+/* =====================================================
+   MOBILE BUTTON
+===================================================== */
 
-
-/*
-  Tapping directly on the runway
-  also jumps.
-*/
-
-runway.addEventListener(
-  'pointerdown',
-  e => {
-
-    if(
-      e.target === runway ||
-      e.target === runner
-    ){
-
-      jump();
-
-    }
-
-  }
-);
-
-
-/*
-  Space / Arrow Up support
-  for desktop.
-*/
-
-window.addEventListener(
-  'keydown',
-  e => {
-
-    if(
-      e.code === 'Space' ||
-      e.code === 'ArrowUp'
-    ){
+jumpBtn
+  .addEventListener(
+    'pointerdown',
+    e => {
 
       e.preventDefault();
 
       jump();
 
     }
+  );
 
-  }
-);
+
+/*
+  Also allow touching the runway itself.
+*/
+
+runway
+  .addEventListener(
+    'pointerdown',
+    e => {
+
+      if(
+        !running
+      ){
+        return;
+      }
+
+      /*
+        Don't trigger through result overlay buttons.
+      */
+
+      if(
+        e.target.closest(
+          '.resultCard'
+        )
+      ){
+
+        return;
+
+      }
+
+      e.preventDefault();
+
+      jump();
+
+    }
+  );
+
+
+/* =====================================================
+   DESKTOP CONTROLS
+===================================================== */
+
+window
+  .addEventListener(
+    'keydown',
+    e => {
+
+      if(
+        e.code ===
+        'Space' ||
+        e.code ===
+        'ArrowUp'
+      ){
+
+        e.preventDefault();
+
+        jump();
+
+      }
+
+    }
+  );
 
 
 /* =====================================================
@@ -3041,29 +3490,31 @@ function getRunnerBox(){
     runner
       .getBoundingClientRect();
 
-
   /*
-    Sprite is bigger than Sonic's actual body,
-    so the hitbox is deliberately smaller.
+    Smaller Sonic hitbox.
   */
 
-  return {
+  return{
 
     left:
       r.left +
-      r.width * .24,
+      r.width *
+      .28,
 
     right:
       r.right -
-      r.width * .18,
+      r.width *
+      .23,
 
     top:
       r.top +
-      r.height * .16,
+      r.height *
+      .23,
 
     bottom:
       r.bottom -
-      r.height * .08
+      r.height *
+      .12
 
   };
 
@@ -3071,52 +3522,72 @@ function getRunnerBox(){
 
 
 function getObstacleBox(
-  o,
+  obstacle,
   type
 ){
 
   const r =
-    o.getBoundingClientRect();
+    obstacle
+      .getBoundingClientRect();
 
 
-  if(type === 'rocket'){
+  if(
+    type ===
+    'rocket'
+  ){
 
-    return {
+    /*
+      Rocket mover includes some empty space,
+      therefore shrink it.
+    */
+
+    return{
 
       left:
         r.left +
-        r.width * .13,
+        r.width *
+        .12,
 
       right:
         r.right -
-        r.width * .08,
+        r.width *
+        .10,
 
       top:
         r.top +
-        r.height * .2,
+        r.height *
+        .25,
 
       bottom:
         r.bottom -
-        r.height * .18
+        r.height *
+        .20
 
     };
 
   }
 
 
-  return {
+  /*
+    Ground barrier.
+  */
+
+  return{
 
     left:
       r.left +
-      r.width * .16,
+      r.width *
+      .20,
 
     right:
       r.right -
-      r.width * .16,
+      r.width *
+      .20,
 
     top:
       r.top +
-      r.height * .13,
+      r.height *
+      .17,
 
     bottom:
       r.bottom
@@ -3151,12 +3622,63 @@ function boxesOverlap(
 
 
 /* =====================================================
+   HIT PLAYER
+===================================================== */
+
+function registerHit(
+  obstacle
+){
+
+  if(
+    obstacle.dataset.hit
+  ){
+
+    return;
+
+  }
+
+  obstacle.dataset.hit =
+    '1';
+
+  hits++;
+
+  sfx(
+    'hit'
+  );
+
+  flashNow();
+
+  hitText.textContent =
+    'HITS ' +
+    hits +
+    ' / ' +
+    MAX_HITS;
+
+  obstacle.style.opacity =
+    '.20';
+
+
+  if(
+    hits >=
+    MAX_HITS
+  ){
+
+    failGame();
+
+  }
+
+}
+
+
+/* =====================================================
    SPAWN OBSTACLE
 ===================================================== */
 
 function spawnObstacle(){
 
-  if(!running){
+  if(
+    !running
+  ){
 
     return;
 
@@ -3164,35 +3686,64 @@ function spawnObstacle(){
 
 
   /*
-    Rockets are deliberately less common.
-    Barrier ≈ 68%
-    Rocket  ≈ 32%
+    Around 35% rockets.
   */
 
   const isRocket =
-    Math.random() < .32;
-
+    Math.random() <
+    .35;
 
   let obstacle;
 
 
-  if(isRocket){
+  /* ===================================================
+     CREATE ROCKET
+  =================================================== */
+
+  if(
+    isRocket
+  ){
 
     obstacle =
       document.createElement(
         'div'
       );
 
-
     obstacle.className =
-      'cssRocket';
-
+      'rocketMover';
 
     obstacle.dataset.type =
       'rocket';
 
+
+    const rocket =
+      document.createElement(
+        'div'
+      );
+
+    rocket.className =
+      'cssRocket';
+
+
+    obstacle.appendChild(
+      rocket
+    );
+
+
+    /*
+      Warning sound when rocket appears.
+    */
+
+    sfx(
+      'rocket'
+    );
+
   }
 
+
+  /* ===================================================
+     CREATE GROUND BARRIER
+  =================================================== */
 
   else{
 
@@ -3201,18 +3752,14 @@ function spawnObstacle(){
         'img'
       );
 
-
     obstacle.className =
       'obstacle ground';
-
 
     obstacle.src =
       './assets/stage2/eggman-barrier.png';
 
-
     obstacle.alt =
       'Eggman barrier';
-
 
     obstacle.dataset.type =
       'ground';
@@ -3221,7 +3768,8 @@ function spawnObstacle(){
 
 
   const mobile =
-    window.innerWidth <= 520;
+    window.innerWidth <=
+    520;
 
 
   const elapsed =
@@ -3229,46 +3777,51 @@ function spawnObstacle(){
     timeLeft;
 
 
-  /*
-    Game becomes slightly faster as
-    time passes, but mobile keeps a
-    noticeably slower minimum speed.
-  */
-
   let duration;
 
 
-  if(mobile){
+  /*
+    Mobile obstacles intentionally slower.
+  */
+
+  if(
+    mobile
+  ){
 
     duration =
       Math.max(
-        2.25,
-        3.2 -
-        elapsed * .035
+        2.8,
+        3.65 -
+        elapsed *
+        .025
       );
 
   }
-
 
   else{
 
     duration =
       Math.max(
-        1.85,
-        2.8 -
-        elapsed * .038
+        2.05,
+        2.95 -
+        elapsed *
+        .032
       );
 
   }
 
 
-  obstacle.style.animationDuration =
-    duration + 's';
+  obstacle
+    .style
+    .animationDuration =
+      duration +
+      's';
 
 
-  runway.appendChild(
-    obstacle
-  );
+  runway
+    .appendChild(
+      obstacle
+    );
 
 
   obstacles.push(
@@ -3276,11 +3829,11 @@ function spawnObstacle(){
   );
 
 
-  /* =========================
+  /* ===================================================
      COLLISION LOOP
-  ========================= */
+  =================================================== */
 
-  const check =
+  const collisionCheck =
     setInterval(
       () => {
 
@@ -3290,7 +3843,7 @@ function spawnObstacle(){
         ){
 
           clearInterval(
-            check
+            collisionCheck
           );
 
           return;
@@ -3307,59 +3860,98 @@ function spawnObstacle(){
         }
 
 
-        const runnerBox =
+        const type =
+          obstacle.dataset.type;
+
+
+        /*
+          KEY FIX:
+
+          If ground obstacle and Sonic is jumping,
+          don't even calculate collision.
+        */
+
+        if(
+          type ===
+          'ground' &&
+          jumping
+        ){
+
+          return;
+
+        }
+
+
+        const sonicBox =
           getRunnerBox();
 
 
         const obstacleBox =
           getObstacleBox(
             obstacle,
-            obstacle.dataset.type
+            type
           );
 
 
-        const overlap =
+        const overlapping =
           boxesOverlap(
-            runnerBox,
+            sonicBox,
             obstacleBox
           );
 
 
-        if(overlap){
+        if(
+          !overlapping
+        ){
 
-          obstacle.dataset.hit =
-            '1';
+          return;
 
-
-          hits++;
-
-
-          sfx('hit');
+        }
 
 
-          hitText.textContent =
-            'HITS ' +
-            hits +
-            ' / 3';
+        /*
+          GROUND:
+          only hurts if Sonic is NOT jumping.
+        */
 
+        if(
+          type ===
+          'ground'
+        ){
 
-          obstacle.style.opacity =
-            '.22';
+          if(
+            !jumping
+          ){
 
-
-          flashNow();
-
-
-          if(hits >= 3){
-
-            clearInterval(
-              check
+            registerHit(
+              obstacle
             );
 
-
-            failGame();
-
           }
+
+          return;
+
+        }
+
+
+        /*
+          ROCKET:
+          collision depends on actual screen position.
+
+          Since rocket is above Sonic normally,
+          standing still is safe.
+
+          Jumping into the rocket can hurt.
+        */
+
+        if(
+          type ===
+          'rocket'
+        ){
+
+          registerHit(
+            obstacle
+          );
 
         }
 
@@ -3368,56 +3960,80 @@ function spawnObstacle(){
     );
 
 
-  obstacle.addEventListener(
-    'animationend',
-    () => {
+  /* ===================================================
+     REMOVE FINISHED OBSTACLE
+  =================================================== */
 
-      clearInterval(
-        check
-      );
+  obstacle
+    .addEventListener(
+      'animationend',
+      e => {
+
+        /*
+          Rocket contains another animation.
+          We only want the animationend event
+          from the moving wrapper itself.
+        */
+
+        if(
+          e.target !==
+          obstacle
+        ){
+
+          return;
+
+        }
 
 
-      obstacle.remove();
-
-
-      obstacles =
-        obstacles.filter(
-          x => x !== obstacle
+        clearInterval(
+          collisionCheck
         );
 
-    }
-  );
+
+        obstacle.remove();
 
 
-  /*
-    MUCH LARGER GAPS BETWEEN OBSTACLES.
+        obstacles =
+          obstacles.filter(
+            x =>
+              x !==
+              obstacle
+          );
 
-    Mobile:
-    1.55 - 2.30 seconds
+      }
+    );
 
-    Desktop:
-    1.25 - 1.90 seconds
-  */
+
+  /* ===================================================
+     NEXT OBSTACLE GAP
+
+     Mobile:
+     1.8 – 2.7 sec
+
+     Desktop:
+     1.35 – 2.1 sec
+  =================================================== */
 
   let nextDelay;
 
 
-  if(mobile){
+  if(
+    mobile
+  ){
 
     nextDelay =
-      1550 +
+      1800 +
       Math.random() *
-      750;
+      900;
 
   }
-
 
   else{
 
     nextDelay =
-      1250 +
+      1350 +
       Math.random() *
-      650;
+      750;
 
   }
 
@@ -3432,7 +4048,7 @@ function spawnObstacle(){
 
 
 /* =====================================================
-   STOP TIMERS
+   STOP GAME TIMERS
 ===================================================== */
 
 function stopGateTimers(){
@@ -3441,15 +4057,15 @@ function stopGateTimers(){
     gateTimer
   );
 
-
   clearTimeout(
     spawnTimer
   );
 
+  gateTimer =
+    null;
 
-  gateTimer = null;
-
-  spawnTimer = null;
+  spawnTimer =
+    null;
 
 }
 
@@ -3460,25 +4076,28 @@ function stopGateTimers(){
 
 function failGame(){
 
-  if(!running){
+  if(
+    !running
+  ){
 
     return;
 
   }
 
-
-  running = false;
-
+  running =
+    false;
 
   stopGateTimers();
 
-
-  sfx('fail');
-
+  sfx(
+    'fail'
+  );
 
   failOverlay
     .classList
-    .add('show');
+    .add(
+      'show'
+    );
 
 }
 
@@ -3489,31 +4108,34 @@ function failGame(){
 
 function winGame(){
 
-  if(!running){
+  if(
+    !running
+  ){
 
     return;
 
   }
 
-
-  running = false;
-
+  running =
+    false;
 
   stopGateTimers();
 
-
-  sfx('clear');
-
-
-  localStorage.setItem(
-    'sonicDay.waveOceanGate',
-    'passed'
+  sfx(
+    'clear'
   );
 
+  localStorage
+    .setItem(
+      'sonicDay.waveOceanGate',
+      'passed'
+    );
 
   successOverlay
     .classList
-    .add('show');
+    .add(
+      'show'
+    );
 
 }
 
@@ -3526,67 +4148,72 @@ function startGate(){
 
   stopGateTimers();
 
-
   clearObstacles();
-
 
   timeLeft =
     GAME_TIME;
 
+  hits =
+    0;
 
-  hits = 0;
+  running =
+    true;
 
-
-  running = true;
-
-
-  jumping = false;
-
+  jumping =
+    false;
 
   runner
     .classList
-    .remove('jump');
-
+    .remove(
+      'jump'
+    );
 
   failOverlay
     .classList
-    .remove('show');
-
+    .remove(
+      'show'
+    );
 
   successOverlay
     .classList
-    .remove('show');
-
+    .remove(
+      'show'
+    );
 
   updateGateUI();
 
+
+  /* ===================================================
+     TIMER
+  =================================================== */
 
   gateTimer =
     setInterval(
       () => {
 
-        if(!running){
+        if(
+          !running
+        ){
 
           return;
 
         }
 
-
-        timeLeft -= .1;
-
+        timeLeft -=
+          .1;
 
         updateGateUI();
 
 
         if(
-          timeLeft <= 0
+          timeLeft <=
+          0
         ){
 
-          timeLeft = 0;
-
+          timeLeft =
+            0;
 
           updateGateUI();
-
 
           winGame();
 
@@ -3598,14 +4225,13 @@ function startGate(){
 
 
   /*
-    Give the player a little breathing room
-    before the first obstacle.
+    Give player time before first obstacle.
   */
 
   spawnTimer =
     setTimeout(
       spawnObstacle,
-      1100
+      1450
     );
 
 }
@@ -3615,43 +4241,48 @@ function startGate(){
    RETRY
 ===================================================== */
 
-retryBtn.addEventListener(
-  'click',
-  () => {
+retryBtn
+  .addEventListener(
+    'click',
+    () => {
 
-    sfx('ui');
+      sfx(
+        'ui'
+      );
 
+      startGate();
 
-    startGate();
-
-  }
-);
+    }
+  );
 
 
 /* =====================================================
    CLAIM EMERALD
 ===================================================== */
 
-claimBtn.addEventListener(
-  'click',
-  () => {
+claimBtn
+  .addEventListener(
+    'click',
+    () => {
 
-    localStorage.setItem(
-      'sonicDay.blueEmerald',
-      'true'
-    );
+      localStorage
+        .setItem(
+          'sonicDay.blueEmerald',
+          'true'
+        );
 
+      flashNow();
 
-    flashNow();
+      show(
+        2
+      );
 
-
-    show(2);
-
-  }
-);
+    }
+  );
 
 
 })();
+
 </script>
 
 </body>
